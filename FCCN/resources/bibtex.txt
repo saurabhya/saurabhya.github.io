@@ -1,8 +1,0 @@
-@InProceedings{Yadav_2023_ICCV,
-    author    = {Yadav, Saurabh and Jerripothula, Koteswar Rao},
-    title     = {FCCNs: Fully Complex-valued Convolutional Networks using Complex-valued Color Model and Loss Function},
-    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-    month     = {October},
-    year      = {2023},
-    pages     = {10689-10698}
-}
