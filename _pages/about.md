@@ -25,3 +25,6 @@ When I am not working on my thesis, I usually spend time exploring different key
 I also like to take part in nearby running events and can be seen running around campus in the evenings.
 
 Previous version of this website is available <a href='https://www.saura.bh/old_website/'>here</a>.
+
+Thank you for visiting my website. I am always open to exciting opportunities and collaborations.
+Feel free to reach out to me if you have any questions or would like to discuss potential collaborations. I look forward to connecting with you!
