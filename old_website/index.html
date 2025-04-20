@@ -1,169 +1,553 @@
-
 <!DOCTYPE html>
 <html>
-    
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V0MHFV8ZY6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V0MHFV8ZY6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-V0MHFV8ZY6');
-</script>
+    gtag('config', 'G-V0MHFV8ZY6');
+  </script>
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width"><title>Saurabh Yadav</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width">
+  <title>Saurabh Yadav</title>
 
-<style>
+  <style>
     @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
-* { margin: 0; padding: 0; }
-body { background-color: #2a2b22; color: white; float: left;}
-table td {
-    width: 50%;
-    display: inline-block;
-}
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #2a2b22;
+      color: white;
+      float: left;
+    }
+
+    table td {
+      width: 50%;
+      display: inline-block;
+    }
 
 
-.type{
-    overflow:hidden;
-    display: inline-flex ;
-    border-right: .6em solid yellow ;
-    white-space: nowrap;
-    margin: 10px 5px 0 10px;
-    letter-spacing: .1em;
-    animation:
-    typing 4s steps(10, end),
-    blink-caret .7s step-end infinite;
-}
-@keyframes typing{
-    0%, 70%{width: 0;}
+    .type {
+      overflow: hidden;
+      display: inline-flex;
+      border-right: .6em solid yellow;
+      white-space: nowrap;
+      margin: 10px 5px 0 10px;
+      letter-spacing: .1em;
+      animation:
+        typing 4s steps(10, end),
+        blink-caret .7s step-end infinite;
+    }
 
-    100%{width: 20%;}
-}
-@keyframes blink-caret {
-    from, to{ border-color: transparent}
-    50%{ border-color: yellow;}
-}
+    @keyframes typing {
 
-.appear{
-    animation: magic 5s linear ;
+      0%,
+      70% {
+        width: 0;
+      }
 
-}
-@keyframes magic {
-    0%, 99%{
+      100% {
+        width: 20%;
+      }
+    }
+
+    @keyframes blink-caret {
+
+      from,
+      to {
+        border-color: transparent
+      }
+
+      50% {
+        border-color: yellow;
+      }
+    }
+
+    .appear {
+      animation: magic 5s linear;
+
+    }
+
+    @keyframes magic {
+
+      0%,
+      99% {
         opacity: 0;
-    }
-    
-    100%{
+      }
+
+      100% {
         opacity: 100%;
+      }
     }
-}
 
 
 
-pre { font-family: 'Source Code Pro', monospace; width: 90%; margin: 4em auto; padding: .5em; line-height: 0; counter-reset: line; }
-pre span { display: block; line-height: 1.15rem; } 
-pre span:before { counter-increment: line; content: counter(line); display: inline-block; border-right: 1px solid #888; width: 3ch; padding: 0 .5em; margin-right: .5em; color: #888; text-align: right; }
-pre a { color: #0bc;}
-#no_1 { animation: what 5s infinite cubic-bezier(1,0,1,0);}
-#no_2 { animation: is 5s infinite cubic-bezier(1,0,1,0); }
-#no_3 { animation: theone 5s infinite cubic-bezier(1,0,1,0); }
-#no_4 { animation: singularity 5s infinite cubic-bezier(1,0,1,0); }
-#no_5 { animation: thetwo 5s infinite cubic-bezier(1,0,1,0); }
-#no_6 { animation: optimal 5s infinite cubic-bezier(1,0,1,0); }
-#no_7 { animation: oneone 5s infinite cubic-bezier(1,0,1,0); }
-#no_8 { animation: convolution 5s infinite cubic-bezier(1,0,1,0); }
-@keyframes what { 0% { background-color: #0f0; } 11% { background-color: #2a2b22; } 22% { background-color: #2a2b22; } 33% { background-color: #2a2b22; } 44% { background-color: #2a2b22; } 55% { background-color: #2a2b22; } 66% { background-color: #2a2b22; } 77% { background-color: #2a2b22; } }
-@keyframes is { 0% { background-color: #2a2b22; } 11% { background-color: #0f0; } 22% { background-color: #2a2b22; } 33% { background-color: #2a2b22; } 44% { background-color: #2a2b22; } 55% { background-color: #2a2b22; } 66% { background-color: #2a2b22; } 77% { background-color: #2a2b22; } }
-@keyframes theone { 0% { background-color: #2a2b22; } 11% { background-color: #2a2b22; } 22% { background-color: #0f0; } 33% { background-color: #2a2b22; } 44% { background-color: #2a2b22; } 55% { background-color: #2a2b22; } 66% { background-color: #2a2b22; } 77% { background-color: #2a2b22; } }
-@keyframes singularity { 0% { background-color: #2a2b22; } 11% { background-color: #2a2b22; } 22% { background-color: #2a2b22; } 33% { background-color: #0f0; } 44% { background-color: #2a2b22; } 55% { background-color: #2a2b22; } 66% { background-color: #2a2b22; } 77% { background-color: #2a2b22; } }
-@keyframes thetwo { 0% { background-color: #2a2b22; } 11% { background-color: #2a2b22; } 22% { background-color: #2a2b22; } 33% { background-color: #2a2b22; } 44% { background-color: #2a2b22; } 55% { background-color: #0f0; } 66% { background-color: #2a2b22; } 77% { background-color: #2a2b22; } }
-@keyframes optimal { 0% { background-color: #2a2b22; } 11% { background-color: #2a2b22; } 22% { background-color: #2a2b22; } 33% { background-color: #2a2b22; } 44% { background-color: #2a2b22; } 55% { background-color: #2a2b22; } 66% { background-color: #0f0; } 77% { background-color: #2a2b22; } }
-@keyframes oneone { 0% { background-color: #2a2b22; } 11% { background-color: #2a2b22; } 22% { background-color: #2a2b22; } 33% { background-color: #2a2b22; } 44% { background-color: #2a2b22; } 55% { background-color: #2a2b22; } 66% { background-color: #2a2b22; } 77% { background-color: #0f0; } 88% { background-color: #2a2b22; } }
-@keyframes convolution { 0% { background-color: #2a2b22; } 11% { background-color: #2a2b22; } 22% { background-color: #2a2b22; } 33% { background-color: #2a2b22; } 44% { background-color: #2a2b22; } 55% { background-color: #2a2b22; } 66% { background-color: #2a2b22; } 77% { background-color: #2a2b22; } 88% { background-color: #0f0; } }
-}</style>
+    pre {
+      font-family: 'Source Code Pro', monospace;
+      width: 90%;
+      margin: 4em auto;
+      padding: .5em;
+      line-height: 0;
+      counter-reset: line;
+    }
+
+    pre span {
+      display: block;
+      line-height: 1.15rem;
+    }
+
+    pre span:before {
+      counter-increment: line;
+      content: counter(line);
+      display: inline-block;
+      border-right: 1px solid #888;
+      width: 3ch;
+      padding: 0 .5em;
+      margin-right: .5em;
+      color: #888;
+      text-align: right;
+    }
+
+    pre a {
+      color: #0bc;
+    }
+
+    #no_1 {
+      animation: what 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    #no_2 {
+      animation: is 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    #no_3 {
+      animation: theone 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    #no_4 {
+      animation: singularity 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    #no_5 {
+      animation: thetwo 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    #no_6 {
+      animation: optimal 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    #no_7 {
+      animation: oneone 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    #no_8 {
+      animation: convolution 5s infinite cubic-bezier(1, 0, 1, 0);
+    }
+
+    @keyframes what {
+      0% {
+        background-color: #0f0;
+      }
+
+      11% {
+        background-color: #2a2b22;
+      }
+
+      22% {
+        background-color: #2a2b22;
+      }
+
+      33% {
+        background-color: #2a2b22;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #2a2b22;
+      }
+
+      66% {
+        background-color: #2a2b22;
+      }
+
+      77% {
+        background-color: #2a2b22;
+      }
+    }
+
+    @keyframes is {
+      0% {
+        background-color: #2a2b22;
+      }
+
+      11% {
+        background-color: #0f0;
+      }
+
+      22% {
+        background-color: #2a2b22;
+      }
+
+      33% {
+        background-color: #2a2b22;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #2a2b22;
+      }
+
+      66% {
+        background-color: #2a2b22;
+      }
+
+      77% {
+        background-color: #2a2b22;
+      }
+    }
+
+    @keyframes theone {
+      0% {
+        background-color: #2a2b22;
+      }
+
+      11% {
+        background-color: #2a2b22;
+      }
+
+      22% {
+        background-color: #0f0;
+      }
+
+      33% {
+        background-color: #2a2b22;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #2a2b22;
+      }
+
+      66% {
+        background-color: #2a2b22;
+      }
+
+      77% {
+        background-color: #2a2b22;
+      }
+    }
+
+    @keyframes singularity {
+      0% {
+        background-color: #2a2b22;
+      }
+
+      11% {
+        background-color: #2a2b22;
+      }
+
+      22% {
+        background-color: #2a2b22;
+      }
+
+      33% {
+        background-color: #0f0;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #2a2b22;
+      }
+
+      66% {
+        background-color: #2a2b22;
+      }
+
+      77% {
+        background-color: #2a2b22;
+      }
+    }
+
+    @keyframes thetwo {
+      0% {
+        background-color: #2a2b22;
+      }
+
+      11% {
+        background-color: #2a2b22;
+      }
+
+      22% {
+        background-color: #2a2b22;
+      }
+
+      33% {
+        background-color: #2a2b22;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #0f0;
+      }
+
+      66% {
+        background-color: #2a2b22;
+      }
+
+      77% {
+        background-color: #2a2b22;
+      }
+    }
+
+    @keyframes optimal {
+      0% {
+        background-color: #2a2b22;
+      }
+
+      11% {
+        background-color: #2a2b22;
+      }
+
+      22% {
+        background-color: #2a2b22;
+      }
+
+      33% {
+        background-color: #2a2b22;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #2a2b22;
+      }
+
+      66% {
+        background-color: #0f0;
+      }
+
+      77% {
+        background-color: #2a2b22;
+      }
+    }
+
+    @keyframes oneone {
+      0% {
+        background-color: #2a2b22;
+      }
+
+      11% {
+        background-color: #2a2b22;
+      }
+
+      22% {
+        background-color: #2a2b22;
+      }
+
+      33% {
+        background-color: #2a2b22;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #2a2b22;
+      }
+
+      66% {
+        background-color: #2a2b22;
+      }
+
+      77% {
+        background-color: #0f0;
+      }
+
+      88% {
+        background-color: #2a2b22;
+      }
+    }
+
+    @keyframes convolution {
+      0% {
+        background-color: #2a2b22;
+      }
+
+      11% {
+        background-color: #2a2b22;
+      }
+
+      22% {
+        background-color: #2a2b22;
+      }
+
+      33% {
+        background-color: #2a2b22;
+      }
+
+      44% {
+        background-color: #2a2b22;
+      }
+
+      55% {
+        background-color: #2a2b22;
+      }
+
+      66% {
+        background-color: #2a2b22;
+      }
+
+      77% {
+        background-color: #2a2b22;
+      }
+
+      88% {
+        background-color: #0f0;
+      }
+    }
+    }
+  </style>
 </head>
-<body><pre>
-            
-    <span><div style="display:inline; color:#0f0">saurabh@iiitd</div><div style="display:inline; color:white">:</div><div style="display:inline; color:#ff0096;">~</div><div  style="display: inline; color:#0bc">$</div><div class="type">cat saurabh.txt</div></span>
-    <div class= "appear">
-    <span></span>
-    <span></span>
 
- <span>      _______.     ___      __    __  .______           ___      .______    __    __  </span>
- <span>     /       |    /   \    |  |  |  | |   _  \         /   \     |   _  \  |  |  |  | </span>
- <span>    |   (----`   /  ^  \   |  |  |  | |  |_)  |       /  ^  \    |  |_)  | |  |__|  | </span>
- <span>     \   \      /  /_\  \  |  |  |  | |      /       /  /_\  \   |   _  <  |   __   | </span>
- <span> .----)   |    /  _____  \ |  `--'  | |  |\  \---.  /  _____  \  |  |_)  | |  |  |  | </span>
- <span> |_______/    /__/     \__\ \______/  | _| `.____/ /__/     \__\ |______/  |__|  |__| </span>
- <span>                                                             </span>                 
- <span>               ____    ____  ___       _______       ___   ____    ____   </span>          
- <span>               \   \  /   / /   \     |       \     /   \  \   \  /   /   </span>          
- <span>                \   \/   / /  ^  \    |  .--.  |   /  ^  \  \   \/   /    </span>          
- <span>                 \_    _/ /  /_\  \   |  |  |  |  /  /_\  \  \      /     </span>         
- <span>                   |  |  /  _____  \  |  '--'  | /  _____  \  \    /      </span>         
- <span>                   |__| /__/     \__\ |_______/ /__/     \__\  \__/       </span>           
-    <span></span>
-    <span></span>
-    <span>********</span>
-    <span><div style="display:inline; color:#0f0">About Me</div></span>
-    <span>********</span>
-    <span></span>
-    <span>Hi!, I'm <div style="display:inline; color:#fbec58">Saurabh Yadav</div>, a <div style="display:inline; color:#ff0096">PhD Scholar</div> </span>
-    <span>at <a href='https://iiitd.ac.in/' target="_blank">IIIT-D</a> (Indraprasth Institue of Information Technology)</span>
-    <span></span>
-    <!-- <span>Previously, I was a <div style="display:inline; color:#ff0096">Bachelors student</div> at </span>
+<body>
+  <pre>
+
+    <span>
+      <div style="display:inline; color:#0f0">saurabh@iiitd</div>
+      <div style="display:inline; color:white">:</div>
+      <div style="display:inline; color:#ff0096;">~</div>
+      <div style="display: inline; color:#0bc">$</div>
+      <div class="type">cat saurabh.txt</div>
+    </span>
+    <div class="appear">
+      <span></span>
+      <span></span>
+
+      <span> _______. ___ __ __ .______ ___ .______ __ __ </span>
+      <span> / | / \ | | | | | _ \ / \ | _ \ | | | | </span>
+      <span> | (----` / ^ \ | | | | | |_) | / ^ \ | |_) | | |__| | </span>
+      <span> \ \ / /_\ \ | | | | | / / /_\ \ | _ < | __ | </span>
+          <span> .----) | / _____ \ | `--' | | |\ \---. / _____ \ | |_) | | | | | </span>
+          <span> |_______/ /__/ \__\ \______/ | _| `.____/ /__/ \__\ |______/ |__| |__| </span>
+          <span> </span>
+          <span> ____ ____ ___ _______ ___ ____ ____ </span>
+          <span> \ \ / / / \ | \ / \ \ \ / / </span>
+          <span> \ \/ / / ^ \ | .--. | / ^ \ \ \/ / </span>
+          <span> \_ _/ / /_\ \ | | | | / /_\ \ \ / </span>
+          <span> | | / _____ \ | '--' | / _____ \ \ / </span>
+          <span> |__| /__/ \__\ |_______/ /__/ \__\ \__/ </span>
+          <span></span>
+          <span></span>
+          <span>********</span>
+          <span>
+            <div style="display:inline; color:#0f0">About Me</div>
+          </span>
+          <span>********</span>
+          <span></span>
+          <span>Hi!, I'm <div style="display:inline; color:#fbec58">Saurabh Yadav</div>, a <div
+              style="display:inline; color:#ff0096">PhD Scholar</div> </span>
+          <span>at <a href='https://iiitd.ac.in/' target="_blank">IIIT-D</a> (Indraprasth Institue of Information
+            Technology)</span>
+          <span></span>
+          <!-- <span>Previously, I was a <div style="display:inline; color:#ff0096">Bachelors student</div> at </span>
 <span><a href='https://www.hansrajcollege.ac.in/' target="_blank" >Hansraj College, University of Delhi</a>.</span>
     <span></span> -->
-    <span>I'm currently advised by <a href='http://faculty.iiitd.ac.in/~koteswar' target="_blank">Dr. Koteswar Rao Jerripothula</a>.</span>
-    <span>I'm also part of NeatAI ServoLab <a href= "https://sites.google.com/site/koteswarraojerripothula/neatai-servolab?authuser=0">(NICE lab)</a> and Centre for AI <a href="https://cai.iiitd.ac.in/">(CAI)</a></span>
-    <span></span>
-    <span>My work is focused on <div style="display:inline; color:#ff0096">computer vision</div> and <div style="display:inline; color:#ff0096">deep learning</div>.</span>
-    <span></span>
-    <span>I am always looking for the opportunities to collaborate </span>
-    <span>and work on research projects or discussion on <div style="display: inline; color: #ff0096;">Python</div> and<div style="display: inline; color: #ff0096;"> VIM</div>.</span>
-    <span></span>
-    <span></span>
-    <span>       What        is       the   singularity?</span>
-    <span>         |         |         |         |      </span>
-    <span>       (<a id="no_1">   </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_2">   </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_3">   </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_4">   </a>)&#8213;&#8213;&#8213;&#8213;&#8213;</span>
-    <span>                                              |</span>
-    <span>     <div style="display: inline;">------------------------------------------</div></span>
-    <span>     |</span>
-    <span>      -(<a id="no_5">   </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_6">   </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_7">   </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_8">   </a>)</span>
-    <span>         |         |         |         |</span>
-    <span>        The     optimal     1x1   convolution </span>
-    <span></span>
+          <span>I'm currently advised by <a href='http://faculty.iiitd.ac.in/~koteswar' target="_blank">Dr. Koteswar Rao
+              Jerripothula</a>.</span>
+          <span>I'm also part of NeatAI ServoLab <a
+              href="https://sites.google.com/site/koteswarraojerripothula/neatai-servolab?authuser=0">(NICE lab)</a> and
+            Centre for AI <a href="https://cai.iiitd.ac.in/">(CAI)</a></span>
+          <span></span>
+          <span>My work is focused on <div style="display:inline; color:#ff0096">computer vision</div> and <div
+              style="display:inline; color:#ff0096">deep learning</div>.</span>
+          <span></span>
+          <span>I am always looking for the opportunities to collaborate </span>
+          <span>and work on research projects or discussion on <div style="display: inline; color: #ff0096;">Python
+            </div> and<div style="display: inline; color: #ff0096;"> VIM</div>.</span>
+          <span></span>
+          <span></span>
+          <span> What is the singularity?</span>
+          <span> | | | | </span>
+          <span> (<a id="no_1"> </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_2">
+            </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_3"> </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a
+              id="no_4"> </a>)&#8213;&#8213;&#8213;&#8213;&#8213;</span>
+          <span> |</span>
+          <span>
+            <div style="display: inline;">------------------------------------------</div>
+          </span>
+          <span> |</span>
+          <span> -(<a id="no_5"> </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_6">
+            </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a id="no_7"> </a>)&#8213;&#8213;&#8213;&#8213;&#8213;(<a
+              id="no_8"> </a>)</span>
+          <span> | | | |</span>
+          <span> The optimal 1x1 convolution </span>
+          <span></span>
 
-<span></span>
-<span></span>
-<span>*******</span>
-<span><div style="display:inline; color:#0f0">Contact</div></span>
-<span>*******</span>
-<span></span>
-<span><a href="mailto: saurabhy@iiitd.ac.in"><div style="display: inline; color: #ff0096;">saurabhy@iiitd.ac.in</div></a> </span>
-<span></span>
-<span><a href="https://github.com/saurabhya" target="_blank">GitHub</a> <a href="https://www.linkedin.com/in/saurabh-yadav-b3460716b/" target="_blank">LinkedIn</a> <a href="">Curriculum Vitae</a></span>
-<span><div style="display:inline; font-size:12px;">--more--</div></span>
+          <span></span>
+          <span></span>
+          <span>*******</span>
+          <span>
+            <div style="display:inline; color:#0f0">Contact</div>
+          </span>
+          <span>*******</span>
+          <span></span>
+          <span><a href="mailto: saurabhy@iiitd.ac.in">
+              <div style="display: inline; color: #ff0096;">saurabhy@iiitd.ac.in</div>
+            </a> </span>
+          <span></span>
+          <span><a href="https://github.com/saurabhya" target="_blank">GitHub</a> <a
+              href="https://www.linkedin.com/in/saurabh-yadav-b3460716b/" target="_blank">LinkedIn</a> <a
+              href="">Curriculum Vitae</a></span>
+          <span>
+            <div style="display:inline; font-size:12px;">--more--</div>
+          </span>
 
-<span></span>
-<span></span>
-<span>************</span>
-<span><div style="display:inline; color:#0f0">Projects</div></span>
-<span>************</span>
-<span></span>
-<span></span>
-<span>Here are few things that I work on sometimes:</span>
-<span><a href= "https://saurabhya.github.io/js/star wars/main.html">star wars</a></span>
-<span><a href= "https://saurabhya.github.io/js/Solar/main.html">solar system</a></span>
-<span></span>
-<span>Visit my <a href="https://github.com/saurabhya">github</a> profile to find out more.</span>
+          <span></span>
+          <span></span>
+          <span>************</span>
+          <span>
+            <div style="display:inline; color:#0f0">Projects</div>
+          </span>
+          <span>************</span>
+          <span></span>
+          <span></span>
+          <span>Here are few things that I work on sometimes:</span>
+          <span><a href="https://saurabhya.github.io/old_website/js/star wars/main.html">star wars</a></span>
+          <span><a href="https://saurabhya.github.io/old_websit/js/Solar/main.html">solar system</a></span>
+          <span></span>
+          <span>Visit my <a href="https://github.com/saurabhya">github</a> profile to find out more.</span>
 
-</div>
-</pre>
+    </div>
+  </pre>
 
 </body>
+
 </html>
