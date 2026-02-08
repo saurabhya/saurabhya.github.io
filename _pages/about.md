@@ -20,7 +20,7 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 
-I am currently exploring the uses of multimodality in generative models and actively looking for a postdoc position. Feel free to reach out.
+I am currently a research scientist at Microsoft. I am exploring the development of efficient neural network architectures for time series modeling, primarly focusing on forecasting, anomaly detection and generation. I am fortunate to be advised by <a href='https://scholar.google.com/citations?user=9XiIwDQAAAAJ'>Dr. Vijay Srinivas Agneeswaran</a> and <a href='https://badripatro.github.io/'>Dr. Badri Narayana Patro</a>
 
 I am about to finish my Phd in Computer Science and Engineering under the supervision of <a href='https://sites.google.com/site/koteswarraojerripothula/home?authuser=0'>Dr. Koteswar Rao Jerripothula.</a>. Prior to this I completed my Masters and Bachelors from <a href='#'>University of Delhi</a>.
 
