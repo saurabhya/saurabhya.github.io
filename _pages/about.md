@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>PhD Scholar</a>. IIIT Delhi.
+subtitle: <a href='#'>Research Scientist</a>@ Microsoft
 
 profile:
   align: right
