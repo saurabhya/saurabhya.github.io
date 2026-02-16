@@ -125,12 +125,19 @@ blog_description: a simple whitespace theme for academics
 permalink: /blog/:year/:title/
 
 # Pagination
-pagination:
-  enabled: true
-
 related_blog_posts:
   enabled: true
   max_related: 5
+
+# Pagination
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: '/page/:num/'
+  title: ' :title - page :num of :max'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
 
 # Giscus comments (RECOMMENDED)
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out
