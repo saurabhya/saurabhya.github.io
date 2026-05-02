@@ -5,9 +5,7 @@ permalink: /
 profile: /assets/img/prof_pic.jpg
 now:
   - verb: working on
-    what: efficient neural network architectures for time-series modeling at <a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft</a> — forecasting, anomaly detection, generation.
-  - verb: writing up
-    what: my PhD thesis on complex-valued deep learning for computer vision.
+    what: Efficient Neural Network architectures for Time-Series modeling at <a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft</a> — forecasting, anomaly detection, generation.
   - verb: obsessing over
     what: ergonomic split keyboards on <a href="https://www.reddit.com/r/ErgoMechKeyboards/" target="_blank" rel="noopener">r/ErgoMechKeyboards</a>.
   - verb: running
