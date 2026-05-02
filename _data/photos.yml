@@ -29,39 +29,60 @@ photos:
   - src: sketches/sketch2.jpeg
     category: sketches
     alt: Sketch
+    place: Bangalore, drawn with 0.1mm Fineliner
+    date: Mar 2026
   - src: sketches/sketch4.jpeg
     category: sketches
     alt: Sketch
+    place: Bangalore, drawn with Sailor profit Jr. and a ballpen
+    date: Aug 2025
   - src: sketches/sketch5.jpeg
     category: sketches
     alt: Sketch
+    place: Bangalore, drawn with 0.1mm Fineliner and a ballpen
+    date: Jun 2025
   - src: sketches/sketch7.jpeg
     category: sketches
     alt: Sketch
+    place: New Delhi, drawn with 0.05mm Fineliner & Click Aristocrat
+    date: Oct 2025
   - src: sketches/sketch8.jpeg
     category: sketches
     alt: Sketch
+    place: New Delhi, drawn with Sailor Lecoule
+    date: May 2025
   - src: sketches/sketch9.jpeg
     category: sketches
     alt: Sketch
+    place: New Delhi, drawn with Sailor Lecoule
+    date: May 2025
   - src: places/place1.jpeg
     category: places
     alt: Place
+    place: London Bridge
+    date: Nov 2025
   - src: places/place2.jpeg
     category: places
     alt: Place
+    place: One Piece lego
+    date: Dec 2025
   - src: places/place3.jpeg
     category: places
     alt: Place
-  - src: places/place4.jpeg
-    category: places
-    alt: Place
+    place: Bike Shed Motorcycle Club, London
+    date: Dec 2025
   - src: places/place5.jpeg
     category: places
     alt: Place
+    place: Sheffield
+    date: Nov 2025
   - src: places/place6.jpeg
     category: places
+    place: Sheffield
+    date: Nov 2025
     alt: Place
   - src: places/place7.jpeg
     category: places
     alt: Place
+    place: Ancora Shop, Tokyo
+    date: Oct 2025

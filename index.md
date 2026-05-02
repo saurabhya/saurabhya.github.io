@@ -28,7 +28,7 @@ Off the clock, I'm probably extolling the virtues of <kbd class="kbd">:wq</kbd>,
 the perfect keyboard, or out for an early-morning run. Recently I've been trying to
 get better at sketching with fountain pens.
 
-Also, I would like to thank my colleague Apurv Dube for generously gifting this domain name.
+Also, I would like to thank my colleague [Apurv Dube]() for generously gifting this domain name.
 
 If something here sparks an idea — research, collaboration, or just a keyboard/fountain pen
 recommendation — please [reach out](mailto:{{ site.email }}). I'd love to hear from you.
