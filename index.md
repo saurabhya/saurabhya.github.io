@@ -16,7 +16,7 @@ now:
 
 I'm a Research Scientist at <strong>Microsoft</strong>, building efficient neural networks
 for time‑series — forecasting, anomaly detection, and generation. I'm fortunate to be
-advised by [Dr. Vijay Srinivas Agneeswaran](https://scholar.google.com/citations?user=9XiIwDQAAAAJ)
+advised by [Dr. Vijay Srinivas Agneeswaran](https://scholar.google.com/citations?user=h82IBpYAAAAJ&hl=en)
 and [Dr. Badri Narayana Patro](https://badripatro.github.io/).
 
 I'm wrapping up my PhD in Computer Science and Engineering at <strong>IIIT Delhi</strong>
