@@ -24,6 +24,8 @@ photos:
   - src: sketches/sketch1.jpeg
     category: sketches
     alt: Sketch
+    place: Bangalore, drawn with Kaweco sport (blue), 0.1mm Fineliner (black)
+    date: Mar 2026
   - src: sketches/sketch2.jpeg
     category: sketches
     alt: Sketch
