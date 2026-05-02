@@ -12,8 +12,12 @@ permalink: /misc/
   </header>
 
   {% assign cats = site.data.photos.categories %}
-  {% assign photos = site.data.photos.photos | default: empty %}
-  {% assign sorted = photos | sort: "date" | reverse %}
+  {% assign photos = site.data.photos.photos %}
+  {% if photos and photos.size > 0 %}
+    {% assign sorted = photos | sort: "date" | reverse %}
+  {% else %}
+    {% assign sorted = "" | split: "" %}
+  {% endif %}
 
   {% if cats and cats.size > 0 %}
     <nav class="filters" aria-label="Photo filters">
