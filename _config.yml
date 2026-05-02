@@ -21,7 +21,7 @@ old_website_url: "https://www.saura.bh/old_website/"
 # --- Build ----------------------------------------------------------------
 markdown: kramdown
 highlighter: rouge
-permalink: /blog/:year/:month/:day/:title/
+permalink: /writing/:year/:month/:day/:title/
 timezone: Asia/Kolkata
 
 # Treat _pages as a source of pages too
@@ -29,7 +29,7 @@ include: ["_pages"]
 
 # --- Pagination (jekyll-paginate) -----------------------------------------
 paginate: 6
-paginate_path: "/blog/page:num/"
+paginate_path: "/writing/page:num/"
 
 # --- Plugins (GitHub-Pages safe) ------------------------------------------
 plugins:
@@ -65,4 +65,4 @@ nav:
   - { title: "about",        url: "/" }
   - { title: "publications", url: "/publications/" }
   - { title: "cv",           url: "/cv/" }
-  - { title: "blog",         url: "/blog/" }
+  - { title: "blog",         url: "/writing/" }

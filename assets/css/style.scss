@@ -2,45 +2,45 @@
 ---
 /* === Theme tokens ===================================================== */
 :root {
-  --bg: #fbf8f1;
-  --bg-elev: #f3eee2;
-  --fg: #1a1c1f;
-  --fg-muted: #5b6068;
-  --rule: #e2dccc;
-  --accent: #b86a1f;       /* fountain-pen amber */
-  --accent-soft: #f3e3cf;
-  --link: #8a4a13;
-  --code-bg: #efeadc;
-  --selection: #f6d59c;
+  --bg: #f7f8f3;
+  --bg-elev: #eef1e6;
+  --fg: #1a1f1a;
+  --fg-muted: #5b665b;
+  --rule: #d9e0cf;
+  --accent: #2f7d3a;       /* terminal/forest green */
+  --accent-soft: #dceedc;
+  --link: #1f5a28;
+  --code-bg: #e9ede0;
+  --selection: #b9e6bd;
   --shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 24px -16px rgba(0,0,0,0.18);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0e0f12;
-    --bg-elev: #15171c;
-    --fg: #e7e5df;
-    --fg-muted: #9aa0aa;
-    --rule: #262932;
-    --accent: #e8a35a;
-    --accent-soft: #2a2218;
-    --link: #f1b873;
-    --code-bg: #181a20;
-    --selection: #4a3a1c;
+    --bg: #0d100d;
+    --bg-elev: #141914;
+    --fg: #e4e9e1;
+    --fg-muted: #93a193;
+    --rule: #232a23;
+    --accent: #7ed87a;
+    --accent-soft: #1a261a;
+    --link: #8fe48b;
+    --code-bg: #161c16;
+    --selection: #2c4a2e;
     --shadow: 0 1px 0 rgba(0,0,0,0.3), 0 8px 24px -16px rgba(0,0,0,0.6);
   }
 }
 
 [data-theme="light"] {
-  --bg: #fbf8f1; --bg-elev: #f3eee2; --fg: #1a1c1f; --fg-muted: #5b6068;
-  --rule: #e2dccc; --accent: #b86a1f; --accent-soft: #f3e3cf;
-  --link: #8a4a13; --code-bg: #efeadc; --selection: #f6d59c;
+  --bg: #f7f8f3; --bg-elev: #eef1e6; --fg: #1a1f1a; --fg-muted: #5b665b;
+  --rule: #d9e0cf; --accent: #2f7d3a; --accent-soft: #dceedc;
+  --link: #1f5a28; --code-bg: #e9ede0; --selection: #b9e6bd;
   --shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 24px -16px rgba(0,0,0,0.18);
 }
 [data-theme="dark"] {
-  --bg: #0e0f12; --bg-elev: #15171c; --fg: #e7e5df; --fg-muted: #9aa0aa;
-  --rule: #262932; --accent: #e8a35a; --accent-soft: #2a2218;
-  --link: #f1b873; --code-bg: #181a20; --selection: #4a3a1c;
+  --bg: #0d100d; --bg-elev: #141914; --fg: #e4e9e1; --fg-muted: #93a193;
+  --rule: #232a23; --accent: #7ed87a; --accent-soft: #1a261a;
+  --link: #8fe48b; --code-bg: #161c16; --selection: #2c4a2e;
   --shadow: 0 1px 0 rgba(0,0,0,0.3), 0 8px 24px -16px rgba(0,0,0,0.6);
 }
 

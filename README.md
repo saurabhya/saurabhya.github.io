@@ -45,8 +45,10 @@ tags: [research, vim]
 ---
 ```
 
-Posts are listed at `/blog/` (paginated, 6 per page) and resolve to URLs like
-`/blog/2026/05/02/some-slug/`.
+Posts are listed at `/writing/` (paginated, 6 per page) and resolve to URLs like
+`/writing/2026/05/02/some-slug/`. The nav still labels this tab "blog" — the path
+is `/writing/` because the user already has a `saurabhya/blog` repo and GitHub
+Pages would otherwise route `/blog/` to that project's pages.
 
 ## Deployment
 

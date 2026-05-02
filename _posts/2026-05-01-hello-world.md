@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hello, world (again)"
-date: 2026-05-02 18:00:00 +0530
+date: 2026-05-01 09:00:00 +0530
 description: A new home for notes, half-formed thoughts, and the occasional keyboard rabbit hole.
 tags: [meta]
 ---
