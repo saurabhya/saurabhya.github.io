@@ -9,7 +9,7 @@ now:
   - verb: obsessing over
     what: ergonomic split keyboards on <a href="https://www.reddit.com/r/ErgoMechKeyboards/" target="_blank" rel="noopener">r/ErgoMechKeyboards</a>.
   - verb: running
-    what: short loops in Bangalore at sunrise.
+    what: loops in Bangalore at sunrise.
   - verb: sketching
     what: with fountain pens — slowly, badly, happily.
 ---
@@ -25,9 +25,8 @@ where I work on complex-valued deep learning for computer vision. Before that, I
 M.Sc. and B.Sc. (Hons.) in Computer Science at the University of Delhi.
 
 Off the clock, I'm probably extolling the virtues of <kbd class="kbd">:wq</kbd>, hunting down
-the perfect 36‑key layout, or out for an early-morning run. Recently I've been trying to
+the perfect keyboard, or out for an early-morning run. Recently I've been trying to
 get better at sketching with fountain pens.
 
-The previous version of this site lives [here]({{ site.old_website_url }}).
-If something here sparks an idea — research, collaboration, or just a keyboard
+If something here sparks an idea — research, collaboration, or just a keyboard/fountain pen
 recommendation — please [reach out](mailto:{{ site.email }}). I'd love to hear from you.
