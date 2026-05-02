@@ -11,6 +11,15 @@ description: Peer-reviewed work and pre-prints, newest first.
   · <a href="https://github.com/{{ site.github_username }}" rel="noopener" target="_blank">GitHub</a>.
 </p>
 
+<h2 class="pub-year">2026</h2>
+<ul class="pubs">
+  <li class="pub">
+    <p class="pub__title">SAMwave: Wavelet-Driven Feature Enrichment for Effective Adaptation of Segment Anything Model</p>
+    <p class="pub__authors"><strong>Saurabh Yadav</strong>, Avi Gupta, Koteswar Rao Jerripothula</p>
+    <p class="pub__venue">International Journal of Computer Vision <span class="pub__status">under review</span></p>
+  </li>
+</ul>
+
 <h2 class="pub-year">2025</h2>
 <ul class="pubs">
   <li class="pub">
