@@ -19,7 +19,13 @@ categories:
     label: places
     description: snapshots from runs, trips, and the occasional detour.
 
-photos: []
+photos: [
+  - src: sketches/sketch1.jpeg
+    category: sketches
+    caption: Random doodle, while I was trying to picture a village road, drawn with kaweco sport (blue), and artline 0.1 mm fineliner (black)
+    date: Mar 2026
+
+]
   # Example entry — uncomment and tweak after adding the actual file:
   # - src: places/munnar-sunrise.jpg
   #   category: places
