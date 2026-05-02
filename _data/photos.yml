@@ -2,11 +2,12 @@
 #
 # Add an entry per image. Drop the file under assets/img/photos/<category>/.
 # Fields:
-#   src     (required) path under /assets/img/photos/, e.g. sketches/foo.jpg
-#   caption (required) short blurb shown under the photo
-#   place   (optional) location, shown alongside the date
-#   date    (optional) free-form, e.g. "Mar 2025" — used for sorting (newest first)
-#   alt     (optional) accessibility text; falls back to caption
+#   src      (required) path under /assets/img/photos/, e.g. sketches/foo.jpg
+#   category (required) one of the ids under `categories` below
+#   caption  (optional) short blurb shown under the photo
+#   place    (optional) location, shown alongside the date
+#   date     (optional) free-form, e.g. "Mar 2025" — used for sorting (newest first)
+#   alt      (optional) accessibility text; falls back to caption
 #
 # Categories control the filter pills at the top of /misc/.
 # Add or rename categories freely; "all" is added automatically.
@@ -19,20 +20,46 @@ categories:
     label: places
     description: snapshots from runs, trips, and the occasional detour.
 
-photos: [
+photos:
   - src: sketches/sketch1.jpeg
     category: sketches
-    caption: Random doodle, while I was trying to picture a village road, drawn with kaweco sport (blue), and artline 0.1 mm fineliner (black)
-    date: Mar 2026
-
-]
-  # Example entry — uncomment and tweak after adding the actual file:
-  # - src: places/munnar-sunrise.jpg
-  #   category: places
-  #   caption: First light over the Munnar tea estates.
-  #   place: Munnar, Kerala
-  #   date: Jan 2025
-  # - src: sketches/lamy-2000.jpg
-  #   category: sketches
-  #   caption: Lamy 2000, drawn with a Lamy 2000 (suitably recursive).
-  #   date: Mar 2025
+    alt: Sketch
+  - src: sketches/sketch2.jpeg
+    category: sketches
+    alt: Sketch
+  - src: sketches/sketch4.jpeg
+    category: sketches
+    alt: Sketch
+  - src: sketches/sketch5.jpeg
+    category: sketches
+    alt: Sketch
+  - src: sketches/sketch7.jpeg
+    category: sketches
+    alt: Sketch
+  - src: sketches/sketch8.jpeg
+    category: sketches
+    alt: Sketch
+  - src: sketches/sketch9.jpeg
+    category: sketches
+    alt: Sketch
+  - src: places/place1.jpeg
+    category: places
+    alt: Place
+  - src: places/place2.jpeg
+    category: places
+    alt: Place
+  - src: places/place3.jpeg
+    category: places
+    alt: Place
+  - src: places/place4.jpeg
+    category: places
+    alt: Place
+  - src: places/place5.jpeg
+    category: places
+    alt: Place
+  - src: places/place6.jpeg
+    category: places
+    alt: Place
+  - src: places/place7.jpeg
+    category: places
+    alt: Place

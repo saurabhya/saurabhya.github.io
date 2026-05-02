@@ -47,7 +47,9 @@ permalink: /misc/
                  loading="lazy">
           </a>
           <figcaption>
-            <p class="gallery__caption">{{ p.caption }}</p>
+            {%- if p.caption -%}
+              <p class="gallery__caption">{{ p.caption }}</p>
+            {%- endif -%}
             {%- if p.place or p.date -%}
               <p class="gallery__meta">
                 {%- if p.place %}<span>{{ p.place }}</span>{%- endif -%}
@@ -59,6 +61,10 @@ permalink: /misc/
         </figure>
       {%- endfor -%}
     </div>
+    <p class="gallery__more">
+      <span class="prompt">$</span> rsync -avh --progress ~/camera-roll/ ./photos/ &nbsp;<span class="empty__cursor">▍</span>
+      <span class="gallery__more-note">more sketches and places still digging through&hellip;</span>
+    </p>
   {% endif %}
 
   {% if cats and cats.size > 0 %}

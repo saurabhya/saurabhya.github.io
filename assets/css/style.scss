@@ -621,6 +621,25 @@ th { font-weight: 600; }
 }
 @keyframes blink { 50% { opacity: 0; } }
 
+.gallery__more {
+  margin: 1.6rem 0 0;
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  background: var(--bg-elev);
+  color: var(--fg-muted);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  text-align: center;
+}
+.gallery__more-note {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  font-style: italic;
+}
+
 /* Lightbox */
 .lightbox {
   border: 0;
