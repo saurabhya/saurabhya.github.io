@@ -1,25 +1,12 @@
-    {% if site.footer_fixed %}
-    <footer class="fixed-bottom">
-      <div class="container mt-0">
-        &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}. {{ site.footer_text }}
-        {%- if site.impressum_path -%}
-        <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-        {%- endif -%}
-        {%- if site.last_updated -%}
-        Last updated: {{ "now" | date: '%B %d, %Y' }}.
-        {%- endif %}
-      </div>
-    </footer>
-    {%- else -%}
-    <footer class="sticky-bottom mt-5">
-      <div class="container">
-        &copy; Copyright {{ site.time | date: '%Y' }} {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}. {{ site.footer_text }}
-        {%- if site.impressum_path -%}
-        <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-        {%- endif -%}
-        {%- if site.last_updated -%}
-        Last updated: {{ "now" | date: '%B %d, %Y' }}.
-        {%- endif %}
-      </div>
-    </footer>
-    {%- endif %}
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__line">
+      <span class="prompt">$</span> echo "made with <span class="footer__heart" aria-hidden="true">vim</span> in {{ site.location }}"
+    </p>
+    <p class="site-footer__meta">
+      © {{ site.time | date: "%Y" }} {{ site.author }} ·
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a> ·
+      <a href="https://github.com/{{ site.github_username }}/{{ site.github_username }}.github.io">source</a>
+    </p>
+  </div>
+</footer>

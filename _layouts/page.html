@@ -1,27 +1,16 @@
 ---
 layout: default
 ---
-<!-- page.html -->
-<div class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-description">{{ page.description }}</p>
-  </header>
-
-  <article>
+<article class="page">
+  {% if page.title and page.hide_title != true %}
+    <header class="page__header">
+      <h1 class="page__title">
+        <span class="prompt">$</span> {{ page.title }}
+      </h1>
+      {% if page.subtitle %}<p class="page__subtitle">{{ page.subtitle }}</p>{% endif %}
+    </header>
+  {% endif %}
+  <div class="prose">
     {{ content }}
-  </article>
-
-  {%- if page.related_publications != null and page.related_publications.size > 0 -%}
-  {% assign publications = page.related_publications | replace: ", ", "," | split: "," | join: "|" %}
-  <h2>References</h2>
-  <div class="publications">
-    {% bibliography -f {{ site.scholar.bibliography }} -q @*[key^={{ publications }}]* %}
   </div>
-  {%- endif %}
-
-  {%- if site.giscus and page.giscus_comments -%}
-    {% include giscus.html %}
-  {%- endif -%}
-</div>
+</article>

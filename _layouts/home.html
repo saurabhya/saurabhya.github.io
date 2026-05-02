@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<section class="home">
+  <div class="home__intro">
+    <div class="home__text">
+      <p class="home__hello">
+        <span class="prompt">$</span> whoami
+      </p>
+      <h1 class="home__name">{{ site.title }}</h1>
+      <p class="home__tagline">{{ site.tagline }} · {{ site.location }}</p>
+      <div class="home__bio prose">
+        {{ content }}
+      </div>
+      {%- include social.html -%}
+    </div>
+
+    {% if page.profile %}
+      <aside class="home__profile">
+        <img src="{{ page.profile | relative_url }}" alt="Portrait of {{ site.author }}" loading="eager">
+      </aside>
+    {% endif %}
+  </div>
+
+  {% if page.now %}
+    <section class="now">
+      <h2 class="section__title"><span class="prompt">$</span> now</h2>
+      <ul class="now__list">
+        {%- for item in page.now -%}
+          <li><span class="now__verb">{{ item.verb }}</span> {{ item.what }}</li>
+        {%- endfor -%}
+      </ul>
+      <p class="now__note">Last updated {{ site.time | date: "%b %Y" }}.</p>
+    </section>
+  {% endif %}
+
+  {% assign recent = site.posts | slice: 0, 3 %}
+  {% if recent.size > 0 %}
+    <section class="recent">
+      <h2 class="section__title"><span class="prompt">$</span> recent posts</h2>
+      <ul class="post-list">
+        {%- for post in recent -%}
+          <li>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <p><a class="more" href="{{ '/blog/' | relative_url }}">all posts →</a></p>
+    </section>
+  {% endif %}
+</section>
