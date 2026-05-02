@@ -66,3 +66,4 @@ nav:
   - { title: "publications", url: "/publications/" }
   - { title: "cv",           url: "/cv/" }
   - { title: "blog",         url: "/writing/" }
+  - { title: "misc",         url: "/misc/" }

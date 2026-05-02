@@ -1,0 +1,32 @@
+# Photos for the /misc/ page.
+#
+# Add an entry per image. Drop the file under assets/img/photos/<category>/.
+# Fields:
+#   src     (required) path under /assets/img/photos/, e.g. sketches/foo.jpg
+#   caption (required) short blurb shown under the photo
+#   place   (optional) location, shown alongside the date
+#   date    (optional) free-form, e.g. "Mar 2025" — used for sorting (newest first)
+#   alt     (optional) accessibility text; falls back to caption
+#
+# Categories control the filter pills at the top of /misc/.
+# Add or rename categories freely; "all" is added automatically.
+
+categories:
+  - id: sketches
+    label: sketches
+    description: fountain-pen scribbles, mostly bad, slowly less bad.
+  - id: places
+    label: places
+    description: snapshots from runs, trips, and the occasional detour.
+
+photos: []
+  # Example entry — uncomment and tweak after adding the actual file:
+  # - src: places/munnar-sunrise.jpg
+  #   category: places
+  #   caption: First light over the Munnar tea estates.
+  #   place: Munnar, Kerala
+  #   date: Jan 2025
+  # - src: sketches/lamy-2000.jpg
+  #   category: sketches
+  #   caption: Lamy 2000, drawn with a Lamy 2000 (suitably recursive).
+  #   date: Mar 2025

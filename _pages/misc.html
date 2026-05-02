@@ -1,0 +1,73 @@
+---
+layout: default
+title: misc
+permalink: /misc/
+---
+<article class="page">
+  <header class="page__header">
+    <h1 class="page__title"><span class="prompt">$</span> misc</h1>
+    <p class="page__subtitle">
+      A scrapbook of fountain-pen sketches and snapshots from places I've wandered through.
+    </p>
+  </header>
+
+  {% assign cats = site.data.photos.categories %}
+  {% assign photos = site.data.photos.photos | default: empty %}
+  {% assign sorted = photos | sort: "date" | reverse %}
+
+  {% if cats and cats.size > 0 %}
+    <nav class="filters" aria-label="Photo filters">
+      <button class="filter is-active" type="button" data-filter="all">all</button>
+      {%- for c in cats -%}
+        <button class="filter" type="button" data-filter="{{ c.id }}">{{ c.label }}</button>
+      {%- endfor -%}
+    </nav>
+  {% endif %}
+
+  {% if sorted.size == 0 %}
+    <div class="empty">
+      <p>No photos here yet — adding them as I dig through the camera roll.</p>
+      <p class="empty__hint">
+        <span class="prompt">$</span> tail -f assets/img/photos/* &nbsp;<span class="empty__cursor">▍</span>
+      </p>
+    </div>
+  {% else %}
+    <div class="gallery" role="list">
+      {%- for p in sorted -%}
+        {% assign cat = p.category | default: "misc" %}
+        <figure class="gallery__item" role="listitem" data-cat="{{ cat }}">
+          <a class="gallery__link" href="{{ p.src | prepend: '/assets/img/photos/' | relative_url }}"
+             data-caption="{{ p.caption | escape }}">
+            <img src="{{ p.src | prepend: '/assets/img/photos/' | relative_url }}"
+                 alt="{{ p.alt | default: p.caption | escape }}"
+                 loading="lazy">
+          </a>
+          <figcaption>
+            <p class="gallery__caption">{{ p.caption }}</p>
+            {%- if p.place or p.date -%}
+              <p class="gallery__meta">
+                {%- if p.place %}<span>{{ p.place }}</span>{%- endif -%}
+                {%- if p.place and p.date %} · {% endif -%}
+                {%- if p.date %}<time>{{ p.date }}</time>{% endif -%}
+              </p>
+            {%- endif -%}
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+  {% endif %}
+
+  {% if cats and cats.size > 0 %}
+    <p class="misc__legend">
+      {%- for c in cats -%}
+        <span><strong>{{ c.label }}</strong> — {{ c.description }}</span>{% unless forloop.last %}<br>{% endunless %}
+      {%- endfor -%}
+    </p>
+  {% endif %}
+</article>
+
+<dialog class="lightbox" aria-label="Photo viewer">
+  <button class="lightbox__close" type="button" aria-label="Close">×</button>
+  <img class="lightbox__img" alt="">
+  <p class="lightbox__caption"></p>
+</dialog>

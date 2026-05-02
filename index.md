@@ -21,7 +21,7 @@ and [Dr. Badri Narayana Patro](https://badripatro.github.io/).
 
 I'm wrapping up my PhD in Computer Science and Engineering at <strong>IIIT Delhi</strong>
 under [Dr. Koteswar Rao Jerripothula](https://sites.google.com/site/koteswarraojerripothula/home?authuser=0),
-where I work on complex-valued deep learning for computer vision. Before that, I did my
+where I worked on complex-valued deep learning for computer vision. Before that, I did my
 M.Sc. and B.Sc. (Hons.) in Computer Science at the University of Delhi.
 
 Off the clock, I'm probably extolling the virtues of <kbd class="kbd">:wq</kbd>, hunting down
