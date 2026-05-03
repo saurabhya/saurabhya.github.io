@@ -222,25 +222,33 @@
     }).addTo(map);
 
     var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2f7d3a';
+    var muted = getComputedStyle(document.documentElement).getPropertyValue('--fg-muted').trim() || '#888';
     var pts = [];
-    var maxCount = visits.reduce(function (m, v) { return Math.max(m, v.count || 1); }, 1);
     visits.forEach(function (v) {
       if (typeof v.latitude !== 'number' || typeof v.longitude !== 'number') return;
       var isCurrent = hasCurrent && visitKey(v) === visitKey(geo);
-      var weight = (v.count || 1) / maxCount;
-      var radius = 4 + weight * 5;
-      L.circleMarker([v.latitude, v.longitude], {
-        radius: radius,
-        color: accent,
-        weight: isCurrent ? 2 : 1,
-        opacity: isCurrent ? 1 : 0.85,
-        fillColor: accent,
-        fillOpacity: isCurrent ? 0.65 : 0.35
-      }).addTo(map);
       if (isCurrent) {
+        L.circleMarker([v.latitude, v.longitude], {
+          radius: 7,
+          color: accent,
+          weight: 2,
+          fillColor: accent,
+          fillOpacity: 0.7
+        }).addTo(map);
         L.circle([v.latitude, v.longitude], {
           radius: 30000, color: accent, weight: 1,
-          opacity: 0.45, fillColor: accent, fillOpacity: 0.08
+          opacity: 0.5, fillColor: accent, fillOpacity: 0.1
+        }).addTo(map);
+      } else {
+        // past visits: hollow muted ring, no fill — clearly secondary
+        L.circleMarker([v.latitude, v.longitude], {
+          radius: 4,
+          color: muted,
+          weight: 1.5,
+          opacity: 0.85,
+          fillColor: muted,
+          fillOpacity: 0.15,
+          dashArray: '2,2'
         }).addTo(map);
       }
       pts.push([v.latitude, v.longitude]);
@@ -257,26 +265,19 @@
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-    var totalVisits = visits.reduce(function (s, v) { return s + (v.count || 1); }, 0);
-    var uniqueLocs = visits.length;
     var ipMasked = (geo && geo.ip || '').replace(/\.\d+$/, '.***').replace(/:[^:]+$/, ':****');
     var lines = [];
     if (hasCurrent) {
+      var loc = [geo.city, geo.region, geo.country].filter(Boolean).join(', ') || 'unknown';
       lines.push('$ whois ' + (ipMasked || 'visitor'));
-      lines.push('> this visit:  ' + ([geo.city, geo.country].filter(Boolean).join(', ') || '—'));
+      lines.push('> city:    ' + (geo.city || '—'));
+      lines.push('> region:  ' + (geo.region || '—'));
+      lines.push('> country: ' + (geo.country || '—'));
+      lines.push('> coords:  ' + lat.toFixed(2) + ', ' + lon.toFixed(2));
+      lines.push('> pin dropped @ ' + loc);
     } else {
-      lines.push('$ cat ~/.cache/saura.bh/visitors.log');
-      lines.push('> current geo lookup failed — showing history.');
-    }
-    lines.push('> total pings: ' + totalVisits);
-    lines.push('> unique locations: ' + uniqueLocs);
-    if (uniqueLocs > 0) {
-      var sample = visits.slice().sort(function (a, b) { return (b.count || 1) - (a.count || 1); }).slice(0, 3)
-        .map(function (v) {
-          var l = [v.city, v.country].filter(Boolean).join(', ') || (v.latitude.toFixed(1) + ',' + v.longitude.toFixed(1));
-          return l + ' ×' + (v.count || 1);
-        }).join('  |  ');
-      lines.push('> top: ' + sample);
+      lines.push('$ traceroute --visits');
+      lines.push('> current geo lookup failed — showing history only.');
     }
     typewriter(lines);
   }
