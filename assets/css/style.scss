@@ -681,3 +681,73 @@ th { font-weight: 600; }
   padding: 0;
 }
 .lightbox__close:hover { color: var(--accent); }
+
+
+/* === Last-visit map ==================================================== */
+.visit {
+  margin: 3rem 0 2rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elev);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.visit__header { margin-bottom: 0.75rem; }
+.visit__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+}
+.visit__sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+}
+.visit__cmd { color: var(--accent); }
+
+.visit__panel {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.visit__log {
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  white-space: pre-wrap;
+  border-bottom: 1px dashed var(--border);
+  min-height: 1.6em;
+}
+.visit__line { display: inline; }
+.visit__map {
+  height: 280px;
+  width: 100%;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 23px, color-mix(in srgb, var(--border) 70%, transparent) 23px 24px),
+    repeating-linear-gradient(90deg, transparent 0 23px, color-mix(in srgb, var(--border) 70%, transparent) 23px 24px),
+    var(--bg);
+}
+.visit__foot {
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  border-top: 1px dashed var(--border);
+  background: var(--bg-elev);
+}
+.visit__cursor { color: var(--accent); }
+
+/* Leaflet overrides to fit the terminal vibe */
+.visit__map .leaflet-control-attribution {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.65rem;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  color: var(--fg-muted);
+}
+.visit__map .leaflet-control-attribution a { color: var(--link); }
