@@ -18,6 +18,19 @@ github_username: saurabhya
 linkedin_username: saurabh-yadav-b3460716b
 old_website_url: "https://www.saura.bh/old_website/"
 
+# --- Visit map (home page) ------------------------------------------------
+# Optional: enable a shared visit map across all visitors using JSONBin.io.
+# Without these, the map falls back to per-browser localStorage history.
+# Setup (1 minute):
+#   1. Create a free account at https://jsonbin.io
+#   2. Create a new BIN with initial body:  {"visits": []}
+#   3. (Optional but recommended) create an Access Key with read+update
+#      permissions scoped to that bin only.
+#   4. Paste the bin id and access key below, commit, push.
+visits:
+  bin_id: ""        # e.g. "65a1...c0"
+  access_key: ""    # e.g. "$2a$10$..."
+
 # --- Build ----------------------------------------------------------------
 markdown: kramdown
 highlighter: rouge

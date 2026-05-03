@@ -751,31 +751,3 @@ th { font-weight: 600; }
   color: var(--fg-muted);
 }
 .visit__map .leaflet-control-attribution a { color: var(--link); }
-
-.visit__legend {
-  margin: 0;
-  padding: 0.45rem 0.9rem;
-  font-size: 0.7rem;
-  color: var(--fg-muted);
-  border-top: 1px dashed var(--border);
-  background: var(--bg-elev);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-.visit__pin {
-  display: inline-block;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  vertical-align: middle;
-  margin-right: 0.25rem;
-}
-.visit__pin--now {
-  background: var(--accent);
-  border: 2px solid var(--accent);
-}
-.visit__pin--past {
-  background: transparent;
-  border: 1.5px dashed var(--fg-muted);
-}

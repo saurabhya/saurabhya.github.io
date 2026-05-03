@@ -13,14 +13,11 @@
     </p>
   </header>
 
-  <div class="visit__panel" data-visit-map>
+  <div class="visit__panel" data-visit-map
+       {% if site.visits.bin_id %}data-visit-bin="{{ site.visits.bin_id }}"{% endif %}
+       {% if site.visits.access_key %}data-visit-key="{{ site.visits.access_key }}"{% endif %}>
     <pre class="visit__log" data-visit-log>resolving IP&hellip; <span class="empty__cursor">&#9613;</span></pre>
     <div class="visit__map" data-visit-leaflet aria-label="Map of past visitor locations" role="img"></div>
-    <p class="visit__legend" aria-hidden="true">
-      <span class="visit__pin visit__pin--now"></span> this visit
-      &nbsp;&nbsp;
-      <span class="visit__pin visit__pin--past"></span> past visits
-    </p>
     <p class="visit__foot">
       <span class="prompt">#</span> approximate, IP-derived; logged in your browser&rsquo;s localStorage only &mdash;
       <span class="visit__cursor"><span class="empty__cursor">&#9613;</span></span>

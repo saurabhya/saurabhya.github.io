@@ -133,8 +133,11 @@
 
   var STORE_KEY = 'visits.v1';
   var MAX_VISITS = 200;
+  var BIN_ID = panel.getAttribute('data-visit-bin') || '';
+  var ACCESS_KEY = panel.getAttribute('data-visit-key') || '';
+  var BIN_URL = BIN_ID ? ('https://api.jsonbin.io/v3/b/' + BIN_ID) : '';
 
-  function loadVisits() {
+  function loadLocal() {
     try {
       var raw = localStorage.getItem(STORE_KEY);
       if (!raw) return [];
@@ -142,16 +145,13 @@
       return Array.isArray(arr) ? arr : [];
     } catch (e) { return []; }
   }
-  function saveVisits(arr) {
+  function saveLocal(arr) {
     try { localStorage.setItem(STORE_KEY, JSON.stringify(arr)); } catch (e) {}
   }
   function visitKey(v) {
-    // dedupe by rounded coords (~11km cell) so repeated pageloads from the
-    // same area don't pile up.
     return (Math.round(v.latitude * 10) / 10) + ',' + (Math.round(v.longitude * 10) / 10);
   }
-  function recordVisit(geo) {
-    var visits = loadVisits();
+  function mergeVisit(visits, geo) {
     var key = visitKey(geo);
     var existing = visits.filter(function (v) { return visitKey(v) === key; })[0];
     if (existing) {
@@ -170,8 +170,47 @@
       });
     }
     if (visits.length > MAX_VISITS) visits = visits.slice(-MAX_VISITS);
-    saveVisits(visits);
     return visits;
+  }
+
+  function loadRemote() {
+    if (!BIN_URL) return Promise.resolve(null);
+    var headers = { 'Content-Type': 'application/json' };
+    if (ACCESS_KEY) headers['X-Access-Key'] = ACCESS_KEY;
+    return fetch(BIN_URL + '/latest', { headers: headers })
+      .then(function (r) { if (!r.ok) throw new Error('bin read failed'); return r.json(); })
+      .then(function (j) {
+        var rec = (j && j.record) || {};
+        var visits = Array.isArray(rec.visits) ? rec.visits : [];
+        return visits;
+      })
+      .catch(function () { return null; });
+  }
+  function saveRemote(visits) {
+    if (!BIN_URL) return Promise.resolve();
+    var headers = { 'Content-Type': 'application/json' };
+    if (ACCESS_KEY) headers['X-Access-Key'] = ACCESS_KEY;
+    return fetch(BIN_URL, {
+      method: 'PUT', headers: headers, body: JSON.stringify({ visits: visits })
+    }).catch(function () {});
+  }
+
+  function getVisits(geo) {
+    // Returns { visits, recordedRemotely } given current geo (may be null)
+    if (BIN_URL) {
+      return loadRemote().then(function (remote) {
+        var visits = remote || loadLocal();
+        if (geo) {
+          visits = mergeVisit(visits, geo);
+          saveLocal(visits);
+          if (remote !== null) saveRemote(visits);
+        }
+        return { visits: visits, remote: remote !== null };
+      });
+    }
+    var visits = loadLocal();
+    if (geo) { visits = mergeVisit(visits, geo); saveLocal(visits); }
+    return Promise.resolve({ visits: visits, remote: false });
   }
 
   function fetchGeo() {
@@ -203,83 +242,82 @@
     var lon = (geo && typeof geo.longitude === 'number') ? geo.longitude : NaN;
     var hasCurrent = !isNaN(lat) && !isNaN(lon);
 
-    var visits = hasCurrent ? recordVisit(geo) : loadVisits();
+    return getVisits(hasCurrent ? geo : null).then(function (state) {
+      var visits = state.visits;
+      var map = L.map(mapEl, {
+        zoomControl: false,
+        attributionControl: true,
+        scrollWheelZoom: false,
+        dragging: true,
+        worldCopyJump: true
+      }).setView([20, 0], 2);
 
-    var map = L.map(mapEl, {
-      zoomControl: false,
-      attributionControl: true,
-      scrollWheelZoom: false,
-      dragging: true,
-      worldCopyJump: true
-    }).setView([20, 0], 2);
+      var url = isDark() ? TILES_DARK : TILES_LIGHT;
+      var tile = L.tileLayer(url, {
+        maxZoom: 11,
+        subdomains: 'abcd',
+        attribution: ATTRIB,
+        detectRetina: true
+      }).addTo(map);
 
-    var url = isDark() ? TILES_DARK : TILES_LIGHT;
-    var tile = L.tileLayer(url, {
-      maxZoom: 11,
-      subdomains: 'abcd',
-      attribution: ATTRIB,
-      detectRetina: true
-    }).addTo(map);
+      var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2f7d3a';
+      var muted = getComputedStyle(document.documentElement).getPropertyValue('--fg-muted').trim() || '#888';
+      var pts = [];
+      visits.forEach(function (v) {
+        if (typeof v.latitude !== 'number' || typeof v.longitude !== 'number') return;
+        var isCurrent = hasCurrent && visitKey(v) === visitKey(geo);
+        if (isCurrent) {
+          L.circleMarker([v.latitude, v.longitude], {
+            radius: 9,
+            color: accent,
+            weight: 2.5,
+            fillColor: accent,
+            fillOpacity: 0.75
+          }).addTo(map);
+          L.circle([v.latitude, v.longitude], {
+            radius: 30000, color: accent, weight: 1,
+            opacity: 0.5, fillColor: accent, fillOpacity: 0.1
+          }).addTo(map);
+        } else {
+          L.circleMarker([v.latitude, v.longitude], {
+            radius: 3,
+            color: muted,
+            weight: 1.25,
+            opacity: 0.75,
+            fillColor: muted,
+            fillOpacity: 0.25
+          }).addTo(map);
+        }
+        pts.push([v.latitude, v.longitude]);
+      });
 
-    var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2f7d3a';
-    var muted = getComputedStyle(document.documentElement).getPropertyValue('--fg-muted').trim() || '#888';
-    var pts = [];
-    visits.forEach(function (v) {
-      if (typeof v.latitude !== 'number' || typeof v.longitude !== 'number') return;
-      var isCurrent = hasCurrent && visitKey(v) === visitKey(geo);
-      if (isCurrent) {
-        L.circleMarker([v.latitude, v.longitude], {
-          radius: 7,
-          color: accent,
-          weight: 2,
-          fillColor: accent,
-          fillOpacity: 0.7
-        }).addTo(map);
-        L.circle([v.latitude, v.longitude], {
-          radius: 30000, color: accent, weight: 1,
-          opacity: 0.5, fillColor: accent, fillOpacity: 0.1
-        }).addTo(map);
-      } else {
-        // past visits: hollow muted ring, no fill — clearly secondary
-        L.circleMarker([v.latitude, v.longitude], {
-          radius: 4,
-          color: muted,
-          weight: 1.5,
-          opacity: 0.85,
-          fillColor: muted,
-          fillOpacity: 0.15,
-          dashArray: '2,2'
-        }).addTo(map);
+      if (pts.length === 1) {
+        map.setView(pts[0], 5);
+      } else if (pts.length > 1) {
+        map.fitBounds(L.latLngBounds(pts).pad(0.25), { maxZoom: 6 });
       }
-      pts.push([v.latitude, v.longitude]);
+
+      var observer = new MutationObserver(function () {
+        tile.setUrl(isDark() ? TILES_DARK : TILES_LIGHT);
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+      var ipMasked = (geo && geo.ip || '').replace(/\.\d+$/, '.***').replace(/:[^:]+$/, ':****');
+      var lines = [];
+      if (hasCurrent) {
+        var loc = [geo.city, geo.region, geo.country].filter(Boolean).join(', ') || 'unknown';
+        lines.push('$ whois ' + (ipMasked || 'visitor'));
+        lines.push('> city:    ' + (geo.city || '—'));
+        lines.push('> region:  ' + (geo.region || '—'));
+        lines.push('> country: ' + (geo.country || '—'));
+        lines.push('> coords:  ' + lat.toFixed(2) + ', ' + lon.toFixed(2));
+        lines.push('> pin dropped @ ' + loc);
+      } else {
+        lines.push('$ traceroute --visits');
+        lines.push('> current geo lookup failed — showing history only.');
+      }
+      typewriter(lines);
     });
-
-    if (pts.length === 1) {
-      map.setView(pts[0], 5);
-    } else if (pts.length > 1) {
-      map.fitBounds(L.latLngBounds(pts).pad(0.25), { maxZoom: 6 });
-    }
-
-    var observer = new MutationObserver(function () {
-      tile.setUrl(isDark() ? TILES_DARK : TILES_LIGHT);
-    });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
-    var ipMasked = (geo && geo.ip || '').replace(/\.\d+$/, '.***').replace(/:[^:]+$/, ':****');
-    var lines = [];
-    if (hasCurrent) {
-      var loc = [geo.city, geo.region, geo.country].filter(Boolean).join(', ') || 'unknown';
-      lines.push('$ whois ' + (ipMasked || 'visitor'));
-      lines.push('> city:    ' + (geo.city || '—'));
-      lines.push('> region:  ' + (geo.region || '—'));
-      lines.push('> country: ' + (geo.country || '—'));
-      lines.push('> coords:  ' + lat.toFixed(2) + ', ' + lon.toFixed(2));
-      lines.push('> pin dropped @ ' + loc);
-    } else {
-      lines.push('$ traceroute --visits');
-      lines.push('> current geo lookup failed — showing history only.');
-    }
-    typewriter(lines);
   }
 
   function boot() {
@@ -288,7 +326,7 @@
     Promise.all([loadCss(LEAFLET_CSS), loadJs(LEAFLET_JS)])
       .then(function () {
         return fetchGeo().then(renderMap, function () {
-          if (loadVisits().length > 0) {
+          if (loadLocal().length > 0 || BIN_URL) {
             renderMap(null);
           } else {
             logEl.textContent = '$ traceroute --visits\n> connection timed out.\n> (your network blocked the geolocation call — totally fair.)\n';
