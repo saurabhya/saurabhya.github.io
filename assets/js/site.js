@@ -131,6 +131,49 @@
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
+  var STORE_KEY = 'visits.v1';
+  var MAX_VISITS = 200;
+
+  function loadVisits() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (!raw) return [];
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+  function saveVisits(arr) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function visitKey(v) {
+    // dedupe by rounded coords (~11km cell) so repeated pageloads from the
+    // same area don't pile up.
+    return (Math.round(v.latitude * 10) / 10) + ',' + (Math.round(v.longitude * 10) / 10);
+  }
+  function recordVisit(geo) {
+    var visits = loadVisits();
+    var key = visitKey(geo);
+    var existing = visits.filter(function (v) { return visitKey(v) === key; })[0];
+    if (existing) {
+      existing.count = (existing.count || 1) + 1;
+      existing.lastSeen = Date.now();
+    } else {
+      visits.push({
+        latitude: geo.latitude,
+        longitude: geo.longitude,
+        city: geo.city || '',
+        region: geo.region || '',
+        country: geo.country || '',
+        count: 1,
+        firstSeen: Date.now(),
+        lastSeen: Date.now()
+      });
+    }
+    if (visits.length > MAX_VISITS) visits = visits.slice(-MAX_VISITS);
+    saveVisits(visits);
+    return visits;
+  }
+
   function fetchGeo() {
     return fetch('https://ipwho.is/?fields=success,ip,city,region,country,latitude,longitude')
       .then(function (r) { return r.json(); })
@@ -156,17 +199,19 @@
 
   function renderMap(geo) {
     var L = window.L;
-    var lat = geo.latitude, lon = geo.longitude;
-    if (typeof lat !== 'number' || isNaN(lat)) {
-      logEl.textContent = 'geo: insufficient data — pin dropped at sea.\n';
-      lat = 0; lon = 0;
-    }
+    var lat = (geo && typeof geo.latitude === 'number') ? geo.latitude : NaN;
+    var lon = (geo && typeof geo.longitude === 'number') ? geo.longitude : NaN;
+    var hasCurrent = !isNaN(lat) && !isNaN(lon);
+
+    var visits = hasCurrent ? recordVisit(geo) : loadVisits();
+
     var map = L.map(mapEl, {
       zoomControl: false,
       attributionControl: true,
       scrollWheelZoom: false,
-      dragging: true
-    }).setView([lat, lon], 5);
+      dragging: true,
+      worldCopyJump: true
+    }).setView([20, 0], 2);
 
     var url = isDark() ? TILES_DARK : TILES_LIGHT;
     var tile = L.tileLayer(url, {
@@ -177,48 +222,81 @@
     }).addTo(map);
 
     var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2f7d3a';
-    L.circleMarker([lat, lon], {
-      radius: 7,
-      color: accent,
-      weight: 2,
-      fillColor: accent,
-      fillOpacity: 0.55
-    }).addTo(map);
-    L.circle([lat, lon], {
-      radius: 30000,
-      color: accent,
-      weight: 1,
-      opacity: 0.45,
-      fillColor: accent,
-      fillOpacity: 0.08
-    }).addTo(map);
+    var pts = [];
+    var maxCount = visits.reduce(function (m, v) { return Math.max(m, v.count || 1); }, 1);
+    visits.forEach(function (v) {
+      if (typeof v.latitude !== 'number' || typeof v.longitude !== 'number') return;
+      var isCurrent = hasCurrent && visitKey(v) === visitKey(geo);
+      var weight = (v.count || 1) / maxCount;
+      var radius = 4 + weight * 5;
+      L.circleMarker([v.latitude, v.longitude], {
+        radius: radius,
+        color: accent,
+        weight: isCurrent ? 2 : 1,
+        opacity: isCurrent ? 1 : 0.85,
+        fillColor: accent,
+        fillOpacity: isCurrent ? 0.65 : 0.35
+      }).addTo(map);
+      if (isCurrent) {
+        L.circle([v.latitude, v.longitude], {
+          radius: 30000, color: accent, weight: 1,
+          opacity: 0.45, fillColor: accent, fillOpacity: 0.08
+        }).addTo(map);
+      }
+      pts.push([v.latitude, v.longitude]);
+    });
 
-    // swap tiles when theme toggles
+    if (pts.length === 1) {
+      map.setView(pts[0], 5);
+    } else if (pts.length > 1) {
+      map.fitBounds(L.latLngBounds(pts).pad(0.25), { maxZoom: 6 });
+    }
+
     var observer = new MutationObserver(function () {
       tile.setUrl(isDark() ? TILES_DARK : TILES_LIGHT);
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-    var loc = [geo.city, geo.region, geo.country].filter(Boolean).join(', ') || 'unknown';
-    var ipMasked = (geo.ip || '').replace(/\.\d+$/, '.***').replace(/:[^:]+$/, ':****');
-    typewriter([
-      '$ whois ' + (ipMasked || 'visitor'),
-      '> city:    ' + (geo.city || '—'),
-      '> region:  ' + (geo.region || '—'),
-      '> country: ' + (geo.country || '—'),
-      '> coords:  ' + lat.toFixed(2) + ', ' + lon.toFixed(2),
-      '> pin dropped @ ' + loc
-    ]);
+    var totalVisits = visits.reduce(function (s, v) { return s + (v.count || 1); }, 0);
+    var uniqueLocs = visits.length;
+    var ipMasked = (geo && geo.ip || '').replace(/\.\d+$/, '.***').replace(/:[^:]+$/, ':****');
+    var lines = [];
+    if (hasCurrent) {
+      lines.push('$ whois ' + (ipMasked || 'visitor'));
+      lines.push('> this visit:  ' + ([geo.city, geo.country].filter(Boolean).join(', ') || '—'));
+    } else {
+      lines.push('$ cat ~/.cache/saura.bh/visitors.log');
+      lines.push('> current geo lookup failed — showing history.');
+    }
+    lines.push('> total pings: ' + totalVisits);
+    lines.push('> unique locations: ' + uniqueLocs);
+    if (uniqueLocs > 0) {
+      var sample = visits.slice().sort(function (a, b) { return (b.count || 1) - (a.count || 1); }).slice(0, 3)
+        .map(function (v) {
+          var l = [v.city, v.country].filter(Boolean).join(', ') || (v.latitude.toFixed(1) + ',' + v.longitude.toFixed(1));
+          return l + ' ×' + (v.count || 1);
+        }).join('  |  ');
+      lines.push('> top: ' + sample);
+    }
+    typewriter(lines);
   }
 
   function boot() {
     if (booted) return;
     booted = true;
     Promise.all([loadCss(LEAFLET_CSS), loadJs(LEAFLET_JS)])
-      .then(fetchGeo)
-      .then(renderMap)
+      .then(function () {
+        return fetchGeo().then(renderMap, function () {
+          if (loadVisits().length > 0) {
+            renderMap(null);
+          } else {
+            logEl.textContent = '$ traceroute --visits\n> connection timed out.\n> (your network blocked the geolocation call — totally fair.)\n';
+            mapEl.style.display = 'none';
+          }
+        });
+      })
       .catch(function () {
-        logEl.textContent = '$ traceroute --last-visit\n> connection timed out.\n> (your network blocked the geolocation call — totally fair.)\n';
+        logEl.textContent = '$ traceroute --visits\n> map assets failed to load.\n';
         mapEl.style.display = 'none';
       });
   }

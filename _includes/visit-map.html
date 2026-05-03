@@ -6,18 +6,18 @@
 <section class="visit" aria-labelledby="visit-title">
   <header class="visit__header">
     <h2 id="visit-title" class="visit__title">
-      <span class="prompt">$</span> traceroute --last-visit
+      <span class="prompt">$</span> traceroute --visits
     </h2>
     <p class="visit__sub">
-      <span class="visit__cmd">whois $(curl -s ifconfig.me) | grep -E '^(city|country|loc)'</span>
+      <span class="visit__cmd">cat ~/.cache/saura.bh/visitors.log | awk '{print $city, $country}' | sort -u</span>
     </p>
   </header>
 
   <div class="visit__panel" data-visit-map>
     <pre class="visit__log" data-visit-log>resolving IP&hellip; <span class="empty__cursor">&#9613;</span></pre>
-    <div class="visit__map" data-visit-leaflet aria-label="Map of last visitor's approximate location" role="img"></div>
+    <div class="visit__map" data-visit-leaflet aria-label="Map of past visitor locations" role="img"></div>
     <p class="visit__foot">
-      <span class="prompt">#</span> approximate, IP-derived; not stored anywhere &mdash;
+      <span class="prompt">#</span> approximate, IP-derived; logged in your browser&rsquo;s localStorage only &mdash;
       <span class="visit__cursor"><span class="empty__cursor">&#9613;</span></span>
     </p>
   </div>
