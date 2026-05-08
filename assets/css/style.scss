@@ -751,3 +751,134 @@ th { font-weight: 600; }
   color: var(--fg-muted);
 }
 .visit__map .leaflet-control-attribution a { color: var(--link); }
+
+/* === Post prose: long-form reading ===================================== */
+.post .prose {
+  font-family: "Source Serif 4", "Source Serif Pro", "Iowan Old Style",
+    "Charter", "Georgia", "Cambria", "Times New Roman", serif;
+  font-size: 1.075rem;
+  line-height: 1.75;
+  color: var(--fg);
+  text-wrap: pretty;
+  hyphens: auto;
+}
+.post .prose p { margin: 0 0 1.1rem; }
+.post .prose h2,
+.post .prose h3,
+.post .prose h4 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.post .prose h2 {
+  font-size: 1.35rem;
+  margin: 2.6rem 0 1rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--rule);
+}
+.post .prose h2::before {
+  content: "## ";
+  color: var(--accent);
+  opacity: 0.75;
+}
+.post .prose h3 {
+  font-size: 1.1rem;
+  margin: 2rem 0 0.6rem;
+}
+.post .prose h3::before {
+  content: "### ";
+  color: var(--accent);
+  opacity: 0.65;
+}
+.post .prose a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2.5px;
+  text-decoration-thickness: 1px;
+}
+.post .prose a:hover { color: var(--accent); }
+.post .prose strong { font-weight: 700; }
+.post .prose em { font-style: italic; }
+.post .prose blockquote {
+  margin: 1.4rem 0;
+  padding: 0.6rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--bg-elev);
+  color: var(--fg-muted);
+  font-style: italic;
+}
+.post .prose blockquote p:last-child { margin-bottom: 0; }
+.post .prose hr {
+  border: 0;
+  border-top: 1px dashed var(--rule);
+  margin: 2.4rem 0;
+}
+.post .prose code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.88em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+}
+.post .prose pre {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding: 0.9rem 1rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow-x: auto;
+}
+.post .prose pre code {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-size: inherit;
+}
+.post .prose ul,
+.post .prose ol { padding-left: 1.4rem; }
+.post .prose li { margin: 0.35rem 0; }
+
+/* footnote refs / small print */
+.post .prose sup,
+.post .prose .footnote { font-size: 0.78em; }
+.post .prose .footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--rule);
+  font-size: 0.92rem;
+  color: var(--fg-muted);
+}
+
+/* === MathJax: display equations get their own line ===================== */
+.post .prose mjx-container[display="true"] {
+  display: block;
+  margin: 1.4rem auto;
+  padding: 0.4rem 0.2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  text-align: center;
+}
+/* let inline math wrap rather than blow out the column */
+.post .prose mjx-container:not([display="true"]) {
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* tighter post header */
+.post__lede {
+  font-family: "Source Serif 4", "Iowan Old Style", "Charter", "Georgia", serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--fg-muted);
+  margin: 0.5rem 0 0;
+  line-height: 1.55;
+}
+.post__title {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
