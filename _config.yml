@@ -34,12 +34,6 @@ visits:
 # --- Build ----------------------------------------------------------------
 markdown: kramdown
 highlighter: rouge
-
-# Disable Kramdown's own math processing so MathJax 3 can read $$...$$ directly.
-# Without this, Kramdown converts display $$...$$ blocks to \(...\) inline spans,
-# making them render inline instead of as display equations.
-kramdown:
-  math_engine: null
 permalink: /writing/:year/:month/:day/:title/
 timezone: Asia/Kolkata
 
