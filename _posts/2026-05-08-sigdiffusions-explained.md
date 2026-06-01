@@ -33,7 +33,7 @@ into a clean Euclidean diffusion problem.
 
 This post explains what SigDiffusions does, why it works, what it gets right, and what
 its limitations are. (For background on rough paths and signatures, see [the companion
-post](01_rough_paths_for_ml.md).)
+post](/writing/2026/05/08/rough-paths-for-ml/).)
 
 ---
 
@@ -81,11 +81,13 @@ The log-signature $\mathrm{LogSig}^{\le n}(x)$ of a $d$-channel time series, com
 to truncation level $n$, is a vector in the free nilpotent Lie algebra
 $\mathfrak{g}^n(\mathbb{R}^d)$, which is a finite-dimensional Euclidean vector space of
 dimension given by the Witt formula:
+
 $$
 \dim \mathfrak{g}^n(\mathbb{R}^d)
 \;=\;
 \sum_{k=1}^n \frac{1}{k}\sum_{j \mid k} \mu(j)\, d^{k/j}.
 $$
+
 This dimension is **independent of $L$**. A length-$1000$ and a length-$100$ series
 both produce log-signature vectors of the same size. The signature compresses
 the temporal information into a fixed-dimensional vector that captures the *shape* of
@@ -131,10 +133,12 @@ also the part that makes the closed-form inversion possible.
 
 Before computing the signature, every path is augmented from $d$ channels to $d + 3$
 channels:
+
 $$
 x^{\text{aug}}(s) \;=\; \big(s,\; \sin s,\; \cos s - 1,\; x_1(s),\; \dots,\; x_d(s)\big),
 \qquad s \in [0, 2\pi].
 $$
+
 (The clock $s$ is rescaled from physical time to $[0, 2\pi]$.) The first three channels
 are deterministic — they are the same for every path in the dataset. The last $d$
 channels are the actual data.
@@ -199,10 +203,12 @@ This is the most conventional part of SigDiffusions and I will be brief.
 Once each training time series has been encoded into a log-signature vector
 $\ell \in \mathbb{R}^D$, you train a standard score-based diffusion model
 [^song2020][^ho2020] on these vectors. The forward process is
+
 $$
 \ell_\tau \;=\; \alpha_\tau \ell_0 + \sigma_\tau \varepsilon, \quad \varepsilon \sim
 \mathcal{N}(0, I),
 $$
+
 and the model learns the score $\nabla_\ell \log p_\tau(\ell)$. Sampling runs the
 reverse SDE for some 500–1000 steps.
 
@@ -229,6 +235,7 @@ Once a synthetic log-signature $\hat\ell$ has been sampled, inversion proceeds:
 3. Apply the explicit polynomial formulas of Barančíková et al. [^barancikova2025] to
    read off the Fourier coefficients $\hat c$ of each data channel.
 4. Reconstruct the time series:
+
    $$
    \hat x_i(s) \;=\; \hat c^{(i)}_0 \cdot \frac{s}{2\pi}
    \;+\; \sum_{k=1}^{M} \Big( \hat a^{(i)}_k \sin(ks) + \hat b^{(i)}_k (\cos(ks) - 1) \Big).

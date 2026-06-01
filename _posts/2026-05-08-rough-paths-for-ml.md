@@ -34,9 +34,11 @@ learning, and what it lets you do that nothing else can.
 ## 1. The motivating problem: integrating against a rough signal
 
 Suppose you want to model a controlled differential equation
+
 $$
 dy_t = f(y_t)\, dx_t,\qquad y_0 = y^\ast,
 $$
+
 where $x: [0,T] \to \mathbb{R}^d$ is a driving signal and $y: [0,T] \to \mathbb{R}^e$
 is the response. If $x$ is smooth, the integral $\int f(y_s)\, dx_s$ is well-defined by
 Riemann–Stieltjes. If $x$ is Brownian motion, you need Itô or Stratonovich calculus, and
@@ -49,10 +51,12 @@ pathwise.
 Lyons's insight [^lyons1998][^lyons2007] was to ask: *what extra information do we need
 to attach to* $x$ *to recover a sensible integration theory?* The answer, perhaps
 surprisingly, is the **iterated integrals** of $x$ against itself:
+
 $$
 \int_0^T dx_{t_1},\quad \int_{0<t_1<t_2<T} dx_{t_1}\otimes dx_{t_2},\quad
 \int_{0<t_1<t_2<t_3<T} dx_{t_1}\otimes dx_{t_2}\otimes dx_{t_3},\quad\dots
 $$
+
 The collection of *all* such iterated integrals, packaged together, is the signature.
 
 The miracle is that once you specify these iterated integrals (the so-called "rough path
@@ -71,26 +75,34 @@ gives us a coordinate system in which they look smooth.
 Let $x: [0,T] \to \mathbb{R}^d$ be a continuous path of bounded variation (think
 piecewise-linear interpolation of any time series). Its **step-$k$ signature** is the
 $k$-th order tensor
+
 $$
 S_k(x) \;=\; \int_{0 \le t_1 < t_2 < \dots < t_k \le T}
 dx_{t_1} \otimes dx_{t_2} \otimes \dots \otimes dx_{t_k}
 \;\in\; (\mathbb{R}^d)^{\otimes k}.
 $$
+
 The **signature** of $x$ is the formal series
+
 $$
 S(x) \;=\; (1,\, S_1(x),\, S_2(x),\, S_3(x),\, \dots)
 \;\in\; T((\mathbb{R}^d)) \;=\; \prod_{k=0}^\infty (\mathbb{R}^d)^{\otimes k}.
 $$
+
 For computation we always **truncate** at some level $n$:
+
 $$
 S^{\le n}(x) \;=\; (1, S_1(x), \dots, S_n(x)) \;\in\; T^{(n)}(\mathbb{R}^d).
 $$
+
 At step $k$, the tensor $S_k(x)$ has $d^k$ scalar coordinates, indexed by all length-$k$
 words over $\{1,\dots,d\}$. The coordinate corresponding to word $(i_1, \dots, i_k)$ is
+
 $$
 S^{i_1, \dots, i_k}(x) \;=\; \int_{0 \le t_1 < \dots < t_k \le T}
 dx^{i_1}_{t_1} \, dx^{i_2}_{t_2} \,\cdots\, dx^{i_k}_{t_k}.
 $$
+
 So the step-$2$ signature of a 3-channel path has $9$ coordinates, the step-$3$ has $27$,
 and so on. Truncated to step $n$, the total dimension is $\sum_{k=0}^n d^k$.
 
@@ -105,9 +117,11 @@ exponential tensor $\exp(vT)$.
 
 **Concatenation of two paths.** This is the celebrated **Chen identity** [^chen1957]. If
 $x|_{[a,b]}$ is followed by $x|_{[b,c]}$, then
+
 $$
 S(x|_{[a,c]}) \;=\; S(x|_{[a,b]}) \otimes S(x|_{[b,c]}),
 $$
+
 where $\otimes$ is the truncated tensor product. This is the algebraic backbone of
 *everything* in rough paths. It says signatures over adjacent intervals compose
 multiplicatively, just like exponentials of independent commuting scalars but in a fully
@@ -136,9 +150,11 @@ its speed. We will fix this below by adding a time channel.
 
 3. **Factorial decay (Lyons's estimate).** The norm of the step-$k$ signature is bounded
    by
+
    $$
    \|S_k(x)\| \;\le\; \frac{\omega^{k/p}}{\Gamma(k/p + 1)},
    $$
+
    where $\omega$ is the $p$-variation control of $x$ [^friz2010]. For $p=1$ (bounded
    variation) this is a rapid factorial decay. This is what makes truncation work: most
    of the information lives in the first few levels.
@@ -147,11 +163,13 @@ its speed. We will fix this below by adding a time channel.
 
 The dimension of the free nilpotent Lie algebra $\mathfrak{g}^n(\mathbb{R}^d)$ is given
 by the Witt formula:
+
 $$
 \dim \mathfrak{g}^n(\mathbb{R}^d)
 \;=\;
 \sum_{k=1}^n \frac{1}{k}\sum_{j \mid k} \mu(j)\, d^{k/j},
 $$
+
 where $\mu$ is the Möbius function. Some concrete numbers:
 
 | $d$ | $n=2$ | $n=3$ | $n=4$ | $n=5$ |
@@ -169,9 +187,11 @@ work in log-signature coordinates almost always.
 
 The reparameterization invariance means the signature loses information about *when*
 events happen. The standard fix is to augment the path with a time channel:
+
 $$
 x^{\text{aug}}_t \;=\; (t, x_t) \;\in\; \mathbb{R}^{d+1}.
 $$
+
 Hambly–Lyons [^hambly2010] proved that the signature uniquely determines the path *up to
 tree-like equivalence*; with the time augmentation, this equivalence collapses and the
 signature is essentially injective. Almost every signature-based learning paper adds this
@@ -189,9 +209,11 @@ The **universal nonlinearity property** [^chevyrev2016] says: any continuous fun
 the space of paths can be approximated arbitrarily well by *linear* functionals of the
 signature. In symbols, for any continuous $f: \text{Paths} \to \mathbb{R}$ and any
 $\varepsilon > 0$, there exists a linear functional $\ell$ such that
+
 $$
 \sup_x |f(x) - \langle \ell, S(x)\rangle| < \varepsilon.
 $$
+
 This is the analog of the Stone–Weierstrass theorem for paths. It justifies a
 shockingly simple recipe:
 
@@ -254,9 +276,11 @@ recognition and other sequence tasks with far fewer parameters than RNNs.
 ### 4.2 Neural Controlled Differential Equations (Kidger et al., 2020)
 
 Neural CDEs [^kidger2020] solve
+
 $$
 y_t \;=\; y_0 + \int_0^t f_\theta(y_s)\, dx_s,
 $$
+
 where $x$ is the (interpolated) input time series and $f_\theta$ is a neural network.
 The output $y_T$ is the model prediction. NCDEs handle irregular sampling perfectly,
 extrapolate cleanly in continuous time, and are the *correct* generalization of RNNs to

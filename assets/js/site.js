@@ -245,7 +245,7 @@
     return getVisits(hasCurrent ? geo : null).then(function (state) {
       var visits = state.visits;
       var map = L.map(mapEl, {
-        zoomControl: false,
+        zoomControl: true,
         attributionControl: true,
         scrollWheelZoom: false,
         dragging: true,
