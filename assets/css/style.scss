@@ -769,26 +769,24 @@ th { font-weight: 600; }
   font-family: "JetBrains Mono", ui-monospace, monospace;
   letter-spacing: -0.01em;
   line-height: 1.25;
+  font-weight: 700;
 }
 .post .prose h2 {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   margin: 2.6rem 0 1rem;
   padding-top: 0.4rem;
   border-top: 1px dashed var(--rule);
-}
-.post .prose h2::before {
-  content: "## ";
-  color: var(--accent);
-  opacity: 0.75;
+  color: var(--fg);
 }
 .post .prose h3 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   margin: 2rem 0 0.6rem;
+  color: var(--fg);
 }
-.post .prose h3::before {
-  content: "### ";
-  color: var(--accent);
-  opacity: 0.65;
+.post .prose h4 {
+  font-size: 1.0rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--fg-muted);
 }
 .post .prose a {
   color: var(--link);
