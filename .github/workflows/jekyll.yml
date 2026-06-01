@@ -38,6 +38,8 @@ jobs:
         with:
           ruby-version: '3.1'
           bundler-cache: false
+      - name: Install gems
+        run: bundle install
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
