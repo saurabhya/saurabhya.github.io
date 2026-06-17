@@ -6,12 +6,10 @@ profile: /assets/img/prof_pic.jpg
 now:
   - verb: working on
     what: Efficient Neural Network architectures for Time-Series modeling at <a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft</a> — forecasting, anomaly detection, generation.
-  - verb: obsessing over
-    what: ergonomic split keyboards on <a href="https://www.reddit.com/r/ErgoMechKeyboards/" target="_blank" rel="noopener">r/ErgoMechKeyboards</a>.
-  - verb: running
-    what: loops in Bangalore at sunrise.
-  - verb: sketching
-    what: with fountain pens — slowly, badly, happily.
+  <!-- - verb: running -->
+  <!--   what: loops in Bangalore at sunrise. -->
+  <!-- - verb: sketching -->
+  <!--   what: with fountain pens — slowly, badly, happily. -->
 ---
 
 I'm a Research Scientist at <strong>Microsoft</strong>, building efficient neural networks
