@@ -7,8 +7,6 @@ tags: [rough-paths, signatures, machine-learning, deep-learning, time-series]
 math: true
 ---
 
-# Rough Path Theory for Machine Learning
-
 > *Why do we keep rediscovering the same trick whenever we want to feed a continuous-time
 > signal into a neural network? Because rough path theory got there first.*
 

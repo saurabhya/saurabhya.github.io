@@ -7,8 +7,6 @@ tags: [diffusion, signatures, rough-paths, generative-models, time-series]
 math: true
 ---
 
-# SigDiffusions: Generating Time Series in Log-Signature Space
-
 > *Diffusion models conquered images. Why are they still awkward on time series? And
 > what happens if we run the diffusion in a smarter coordinate system instead of in
 > raw pixels of time?*

@@ -16,12 +16,14 @@ description: Peer-reviewed work and pre-prints, newest first.
   <li class="pub">
     <p class="pub__title">Unsure but Certain: Uncovering the Representation-Confidence Gap in Diffusion Language Models</p>
     <p class="pub__authors"><strong>Saurabh Yadav</strong>, Badri Narayana Patro, Vijay Srinivas Agneeswaran</p>
-    <p class="pub__venue">Pre-Print</p><span class="pub__status">under review</span><p class="pub__links"><a href="https://arxiv.org/pdf/2608.08791" rel="noopener" target="_blank">paper</a></p>
+    <p class="pub__venue">Pre-print</p>
+    <p class="pub__links"><span class="pub__status">under review</span><a href="https://arxiv.org/pdf/2608.08791" rel="noopener" target="_blank">paper</a></p>
   </li>
   <li class="pub">
     <p class="pub__title">Beyond the Bidirectional Promise: Re-evaluating the Robustness of Diffusion Language Models</p>
     <p class="pub__authors"><strong>Saurabh Yadav</strong>, Badri Narayana Patro, Vijay Srinivas Agneeswaran</p>
-    <p class="pub__venue">Pre-Print</p><span class="pub__status">under review</span><p class="pub__links"><a href="https://arxiv.org/pdf/2607.27386" rel="noopener" target="_blank">paper</a></p>
+    <p class="pub__venue">Pre-print</p>
+    <p class="pub__links"><span class="pub__status">under review</span><a href="https://arxiv.org/pdf/2607.27386" rel="noopener" target="_blank">paper</a></p>
   </li>
   <li class="pub">
     <p class="pub__title">SAMwave: Wavelet-Driven Feature Enrichment for Effective Adaptation of Segment Anything Model</p>
@@ -31,7 +33,7 @@ description: Peer-reviewed work and pre-prints, newest first.
   <li class="pub">
     <p class="pub__title">SELECT: Selective Context Transfer for Class-Incremental Semantic Segmentation</p>
     <p class="pub__authors">Avi Gupta, <strong>Saurabh Yadav</strong>, Koteswar Rao Jerripothula</p>
-    <p class="pub__venue">Proveedings of the British Machine Vision Conference (BMVC), 2026</p>
+    <p class="pub__venue">Proceedings of the British Machine Vision Conference (BMVC), 2026</p>
   </li>
 </ul>
 
