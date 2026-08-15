@@ -18,6 +18,11 @@ description: Peer-reviewed work and pre-prints, newest first.
     <p class="pub__authors"><strong>Saurabh Yadav</strong>, Avi Gupta, Koteswar Rao Jerripothula</p>
     <p class="pub__venue">International Journal of Computer Vision <span class="pub__status">under review</span></p>
   </li>
+  <li class="pub">
+    <p class="pub__title">SELECT: Selective Context Transfer for Class-Incremental Semantic Segmentation</p>
+    <p class="pub__authors">Avi Gupta, <strong>Saurabh Yadav</strong>, Koteswar Rao Jerripothula</p>
+    <p class="pub__venue">Proveedings of the British Machine Vision Conference (BMVC), 2026</p>
+  </li>
 </ul>
 
 <h2 class="pub-year">2025</h2>
@@ -30,11 +35,6 @@ description: Peer-reviewed work and pre-prints, newest first.
   <li class="pub">
     <p class="pub__title">Deep Complex Spatio-Spectral Networks with Complex Visual Inputs</p>
     <p class="pub__authors"><strong>Saurabh Yadav</strong>, Koteswar Rao Jerripothula</p>
-    <p class="pub__venue">Pre-print<span class="pub__status">under review</span></p>
-  </li>
-  <li class="pub">
-    <p class="pub__title">SELECT: Selective Context Transfer for Class-Incremental Semantic Segmentation</p>
-    <p class="pub__authors">Avi Gupta, <strong>Saurabh Yadav</strong>, Koteswar Rao Jerripothula</p>
     <p class="pub__venue">Pre-print<span class="pub__status">under review</span></p>
   </li>
 </ul>
