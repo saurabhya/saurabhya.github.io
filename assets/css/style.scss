@@ -767,6 +767,21 @@ th { font-weight: 600; }
 }
 .visit__map .leaflet-control-attribution a { color: var(--link); }
 
+/* OSM ships a single (light) tile style; derive a dark basemap via filter.
+   Mirrors the theme tokens: OS-dark and explicit [data-theme="dark"] darken,
+   while forced [data-theme="light"] wins over OS-dark and stays light. */
+[data-theme="dark"] .visit__map .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.9) grayscale(0.18);
+}
+@media (prefers-color-scheme: dark) {
+  .visit__map .leaflet-tile-pane {
+    filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.9) grayscale(0.18);
+  }
+}
+[data-theme="light"] .visit__map .leaflet-tile-pane {
+  filter: none;
+}
+
 /* === Post prose: long-form reading ===================================== */
 .post .prose {
   font-family: "Source Serif 4", "Source Serif Pro", "Iowan Old Style",

@@ -85,9 +85,8 @@
   var LEAFLET_CSS = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
   var LEAFLET_JS  = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 
-  var TILES_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
-  var TILES_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-  var ATTRIB = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>';
+  var TILES  = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var ATTRIB = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
   var booted = false;
 
@@ -122,13 +121,6 @@
       setTimeout(step, 180);
     }
     step();
-  }
-
-  function isDark() {
-    var t = document.documentElement.getAttribute('data-theme');
-    if (t === 'dark') return true;
-    if (t === 'light') return false;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
   var STORE_KEY = 'visits.v1';
@@ -252,12 +244,9 @@
         worldCopyJump: true
       }).setView([20, 0], 2);
 
-      var url = isDark() ? TILES_DARK : TILES_LIGHT;
-      var tile = L.tileLayer(url, {
-        maxZoom: 11,
-        subdomains: 'abcd',
-        attribution: ATTRIB,
-        detectRetina: true
+      L.tileLayer(TILES, {
+        maxZoom: 19,
+        attribution: ATTRIB
       }).addTo(map);
 
       var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#2f7d3a';
@@ -296,11 +285,6 @@
       } else if (pts.length > 1) {
         map.fitBounds(L.latLngBounds(pts).pad(0.25), { maxZoom: 6 });
       }
-
-      var observer = new MutationObserver(function () {
-        tile.setUrl(isDark() ? TILES_DARK : TILES_LIGHT);
-      });
-      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
       var ipMasked = (geo && geo.ip || '').replace(/\.\d+$/, '.***').replace(/:[^:]+$/, ':****');
       var lines = [];
