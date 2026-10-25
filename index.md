@@ -5,19 +5,17 @@ permalink: /
 profile: /assets/img/prof_pic.jpg
 now:
   - verb: working on
-    what: Efficient Neural Network architectures for Time-Series modeling at <a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="noopener">Microsoft</a> — forecasting, anomaly detection, generation.
+    what: Efficient Neural Network architectures and Agent verification
   - verb: running
-    what: loops in Bangalore at sunrise.
+    what: loops in Bangalore.
   - verb: sketching
     what: with fountain pens — slowly, badly, happily.
 ---
 
-I'm a Research Scientist at <strong>Microsoft</strong>, building efficient neural networks
-for time‑series — forecasting, anomaly detection, and generation. I'm fortunate to be
-advised by [Dr. Vijay Srinivas Agneeswaran](https://scholar.google.com/citations?user=h82IBpYAAAAJ&hl=en)
-and [Dr. Badri Narayana Patro](https://badripatro.github.io/).
+I'm a Research Scientist at <strong>Microsoft</strong>, focusing on efficient models
+spanning across Diffusion Language Models, lifelong learning, and time-series foundation models.
 
-I'm wrapping up my PhD in Computer Science and Engineering at <strong>IIIT Delhi</strong>
+Previously, I was a PhD candidate in Computer Science and Engineering at <strong>IIIT Delhi</strong>
 under [Dr. Koteswar Rao Jerripothula](https://sites.google.com/site/koteswarraojerripothula/home?authuser=0),
 where I worked on complex-valued deep learning for computer vision. Before that, I did my
 M.Sc. and B.Sc. (Hons.) in Computer Science at the University of Delhi.
